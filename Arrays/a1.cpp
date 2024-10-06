@@ -106,19 +106,25 @@ bool check_sort(int array[], int len)
     return true;
 }
 //Unique ele
+//appraoch : ik pointer at zero index and ik ; agr i or j dono same hen to kuch n kro j age brhega lekin gese hi i or j dono alg honge , j+1 pr i k value inser, j+1 is lye cz whn unique ele hoga , asa h iterate .
 int unique(int array[],int len){
-    int index = 0;
-    for(int i =1 ; i<len;i++ ){
-        if (array[index]!=array[i])
-        {
-            array[index+1] = array[i];
+    int prev  = 0;
+    for(int next = 0 ; next<len;next++ ){
+        if(array[prev]!=array[next]){
+            array[prev+1] = array[next];    
+            prev++;
+
         }
     }
-    return index+1;
+    for (int i = 0 ; i<len ;i++){
+        cout <<array[i]<<" ";
+    }
+    return prev; //len of unique ele
+    
 }
 
 int main(){
-    int array[5] = {1, 2, 1, 1, 1};
+    int array[5] = {1,1,2,3,1};
     cout<<unique(array,5);
 }
     
